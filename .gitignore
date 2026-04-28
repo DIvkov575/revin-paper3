@@ -1,3 +1,26 @@
+# ── generated / downloaded artifacts ────────────────────────────────────────
+# model weights
+*.pth
+*.bin
+baselines/Informer2020/checkpoints/
+baselines/SCINet/exp/
+
+# prediction arrays and metrics
+*.npy
+baselines/Informer2020/results/
+
+# downloaded datasets
+baselines/Informer2020/data/ETT/
+baselines/SCINet/data/
+.ecl_tmp/
+
+# training logs
+logs/
+
+# generated figures
+figures/
+
+# ── python ───────────────────────────────────────────────────────────────────
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
