@@ -17,9 +17,6 @@ baselines/SCINet/data/
 # training logs
 logs/
 
-# generated figures
-figures/
-
 # ── python ───────────────────────────────────────────────────────────────────
 # Byte-compiled / optimized / DLL files
 __pycache__/
