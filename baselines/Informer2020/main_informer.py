@@ -1,6 +1,9 @@
 import argparse
 import os
+import sys
 import torch
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '../..'))
 
 from exp.exp_informer import Exp_Informer
 
