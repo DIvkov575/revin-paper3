@@ -49,11 +49,32 @@ pred\_len & MSE & MAE & MSE & MAE & MSE & MAE & $\Delta$MSE & $\Delta$MAE \\
 \end{tabular}
 \end{table}
 
-% ── Table 3: Delta Comparison ─────────────────────────────────────────────────
+% ── Table 3: Our SCINet Results ──────────────────────────────────────────────
+\begin{table}[h]
+\centering
+\caption{Our results: SCINet on ETTh1 (1 run, multivariate). MSE and MAE computed
+directly from inference output (pred.npy / true.npy).}
+\begin{tabular}{rcccccc}
+\toprule
+& \multicolumn{2}{c}{SCINet} & \multicolumn{2}{c}{SCINet + RevIN} & \multicolumn{2}{c}{$\Delta$} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+pred\_len & MSE & MAE & MSE & MAE & $\Delta$MSE & $\Delta$MAE \\
+\midrule
+24  & 0.3352 & 0.3712 & 0.3080 & 0.3458 & $-$0.027 & $-$0.025 \\
+48  & 0.4041 & 0.4333 & 0.3790 & 0.3967 & $-$0.025 & $-$0.037 \\
+168 & 0.4508 & 0.4545 & 0.4073 & 0.4162 & $-$0.044 & $-$0.038 \\
+336 & 0.5335 & 0.5177 & 0.4672 & 0.4719 & $-$0.066 & $-$0.046 \\
+720 & 0.6208 & 0.5938 & 0.5016 & 0.5019 & $-$0.119 & $-$0.092 \\
+960 & 0.6229 & 0.5888 & 0.5499 & 0.5296 & $-$0.073 & $-$0.059 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ── Table 4: Delta Comparison ─────────────────────────────────────────────────
 \begin{table}[h]
 \centering
 \caption{RevIN improvement ($\Delta$ = with RevIN $-$ without RevIN):
-paper (5 runs) vs.\ ours (1 run) on Informer ETTh1.}
+paper (5 runs) vs.\ ours (1 run), Informer on ETTh1.}
 \begin{tabular}{rcccc}
 \toprule
 & \multicolumn{2}{c}{Paper $\Delta$} & \multicolumn{2}{c}{Ours $\Delta$} \\
