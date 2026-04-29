@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\begin{document}
+
+% ── Table 1: Our Results ─────────────────────────────────────────────────────
+\begin{table}[h]
+\centering
+\caption{Our results: Informer on ETTh1 (1 run, multivariate). MSE and MAE computed
+directly from inference output (pred.npy / true.npy).}
+\begin{tabular}{rcccccc}
+\toprule
+& \multicolumn{2}{c}{Informer} & \multicolumn{2}{c}{Informer + RevIN} & \multicolumn{2}{c}{$\Delta$} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+pred\_len & MSE & MAE & MSE & MAE & $\Delta$MSE & $\Delta$MAE \\
+\midrule
+24  & 0.5034 & 0.4995 & 0.4760 & 0.4573 & $-$0.027 & $-$0.042 \\
+48  & 0.9478 & 0.7482 & 0.5734 & 0.5160 & $-$0.375 & $-$0.232 \\
+168 & 1.1121 & 0.8454 & 0.7136 & 0.5898 & $-$0.398 & $-$0.256 \\
+336 & 1.3108 & 0.9322 & 0.8100 & 0.6368 & $-$0.501 & $-$0.295 \\
+720 & 1.4465 & 0.9707 & 1.0216 & 0.7704 & $-$0.425 & $-$0.200 \\
+960 & 1.4406 & 0.9775 & 0.9886 & 0.7572 & $-$0.452 & $-$0.220 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ── Table 2: Paper Results ────────────────────────────────────────────────────
+\begin{table}[h]
+\centering
+\caption{Paper results (Table 12, Kim et al.\ ICLR 2022): Informer on ETTh1
+(mean of 5 runs, multivariate). $\dagger$ denotes originally reported Informer
+numbers from the Informer paper.}
+\begin{tabular}{rcccccccc}
+\toprule
+& \multicolumn{2}{c}{Informer$^\dagger$} & \multicolumn{2}{c}{Informer} & \multicolumn{2}{c}{Informer + RevIN} & \multicolumn{2}{c}{$\Delta$} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
+pred\_len & MSE & MAE & MSE & MAE & MSE & MAE & $\Delta$MSE & $\Delta$MAE \\
+\midrule
+24  & 0.577 & 0.549 & 0.550 & 0.536 & 0.504 & 0.472 & $-$0.046 & $-$0.064 \\
+48  & 0.685 & 0.625 & 0.772 & 0.668 & 0.646 & 0.547 & $-$0.126 & $-$0.121 \\
+168 & 0.931 & 0.752 & 1.138 & 0.853 & 0.655 & 0.561 & $-$0.483 & $-$0.292 \\
+336 & 1.128 & 0.873 & 1.278 & 0.909 & 1.058 & 0.758 & $-$0.220 & $-$0.151 \\
+720 & 1.215 & 0.896 & 1.357 & 0.945 & 0.926 & 0.717 & $-$0.431 & $-$0.228 \\
+960 & --    & --    & 1.470 & 0.990 & 0.902 & 0.715 & $-$0.568 & $-$0.275 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ── Table 3: Delta Comparison ─────────────────────────────────────────────────
+\begin{table}[h]
+\centering
+\caption{RevIN improvement ($\Delta$ = with RevIN $-$ without RevIN):
+paper (5 runs) vs.\ ours (1 run) on Informer ETTh1.}
+\begin{tabular}{rcccc}
+\toprule
+& \multicolumn{2}{c}{Paper $\Delta$} & \multicolumn{2}{c}{Ours $\Delta$} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+pred\_len & $\Delta$MSE & $\Delta$MAE & $\Delta$MSE & $\Delta$MAE \\
+\midrule
+24  & $-$0.046 & $-$0.064 & $-$0.027 & $+$0.000 \\
+48  & $-$0.126 & $-$0.121 & $-$0.375 & $-$0.232 \\
+168 & $-$0.483 & $-$0.292 & $-$0.398 & $-$0.256 \\
+336 & $-$0.220 & $-$0.151 & $-$0.501 & $-$0.295 \\
+720 & $-$0.431 & $-$0.228 & $-$0.425 & $-$0.201 \\
+960 & $-$0.568 & $-$0.275 & $-$0.452 & $-$0.221 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{document}
