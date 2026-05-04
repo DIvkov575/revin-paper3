@@ -6,23 +6,25 @@
 
 \begin{document}
 
-% ── Table 1: Our Results ─────────────────────────────────────────────────────
+% ── Table 1: Our Results (Informer + SCINet) ─────────────────────────────────
 \begin{table}[h]
 \centering
-\caption{Our results: Informer on ETTh1 (1 run, multivariate). MSE and MAE computed
-directly from inference output (pred.npy / true.npy).}
-\begin{tabular}{rcccccc}
+\caption{Our results: Informer and SCINet on ETTh1 (1 run, multivariate). MSE and MAE
+computed directly from inference output (pred.npy / true.npy).}
+\begin{tabular}{rccccccccc}
 \toprule
-& \multicolumn{2}{c}{Informer} & \multicolumn{2}{c}{Informer + RevIN} & \multicolumn{2}{c}{$\Delta$} \\
-\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
-pred\_len & MSE & MAE & MSE & MAE & $\Delta$MSE & $\Delta$MAE \\
+& \multicolumn{4}{c}{Informer} & \multicolumn{4}{c}{SCINet} \\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+& \multicolumn{2}{c}{Baseline} & \multicolumn{2}{c}{+RevIN} & \multicolumn{2}{c}{Baseline} & \multicolumn{2}{c}{+RevIN} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
+pred\_len & MSE & MAE & MSE & MAE & MSE & MAE & MSE & MAE \\
 \midrule
-24  & 0.5034 & 0.4995 & 0.4760 & 0.4573 & $-$0.027 & $-$0.042 \\
-48  & 0.9478 & 0.7482 & 0.5734 & 0.5160 & $-$0.375 & $-$0.232 \\
-168 & 1.1121 & 0.8454 & 0.7136 & 0.5898 & $-$0.398 & $-$0.256 \\
-336 & 1.3108 & 0.9322 & 0.8100 & 0.6368 & $-$0.501 & $-$0.295 \\
-720 & 1.4465 & 0.9707 & 1.0216 & 0.7704 & $-$0.425 & $-$0.200 \\
-960 & 1.4406 & 0.9775 & 0.9886 & 0.7572 & $-$0.452 & $-$0.220 \\
+24  & 0.503 & 0.500 & 0.476 & 0.457 & 0.335 & 0.371 & 0.308 & 0.346 \\
+48  & 0.948 & 0.748 & 0.573 & 0.516 & 0.404 & 0.433 & 0.379 & 0.397 \\
+168 & 1.112 & 0.845 & 0.714 & 0.590 & 0.451 & 0.455 & 0.407 & 0.416 \\
+336 & 1.311 & 0.932 & 0.810 & 0.637 & 0.534 & 0.518 & 0.467 & 0.472 \\
+720 & 1.447 & 0.971 & 1.022 & 0.770 & 0.621 & 0.594 & 0.502 & 0.502 \\
+960 & 1.441 & 0.978 & 0.989 & 0.757 & 0.623 & 0.589 & 0.550 & 0.530 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -33,60 +35,18 @@ pred\_len & MSE & MAE & MSE & MAE & $\Delta$MSE & $\Delta$MAE \\
 \caption{Paper results (Table 12, Kim et al.\ ICLR 2022): Informer on ETTh1
 (mean of 5 runs, multivariate). $\dagger$ denotes originally reported Informer
 numbers from the Informer paper.}
-\begin{tabular}{rcccccccc}
+\begin{tabular}{rccccccc}
 \toprule
-& \multicolumn{2}{c}{Informer$^\dagger$} & \multicolumn{2}{c}{Informer} & \multicolumn{2}{c}{Informer + RevIN} & \multicolumn{2}{c}{$\Delta$} \\
-\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}\cmidrule(lr){8-9}
-pred\_len & MSE & MAE & MSE & MAE & MSE & MAE & $\Delta$MSE & $\Delta$MAE \\
-\midrule
-24  & 0.577 & 0.549 & 0.550 & 0.536 & 0.504 & 0.472 & $-$0.046 & $-$0.064 \\
-48  & 0.685 & 0.625 & 0.772 & 0.668 & 0.646 & 0.547 & $-$0.126 & $-$0.121 \\
-168 & 0.931 & 0.752 & 1.138 & 0.853 & 0.655 & 0.561 & $-$0.483 & $-$0.292 \\
-336 & 1.128 & 0.873 & 1.278 & 0.909 & 1.058 & 0.758 & $-$0.220 & $-$0.151 \\
-720 & 1.215 & 0.896 & 1.357 & 0.945 & 0.926 & 0.717 & $-$0.431 & $-$0.228 \\
-960 & --    & --    & 1.470 & 0.990 & 0.902 & 0.715 & $-$0.568 & $-$0.275 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-% ── Table 3: Our SCINet Results ──────────────────────────────────────────────
-\begin{table}[h]
-\centering
-\caption{Our results: SCINet on ETTh1 (1 run, multivariate). MSE and MAE computed
-directly from inference output (pred.npy / true.npy).}
-\begin{tabular}{rcccccc}
-\toprule
-& \multicolumn{2}{c}{SCINet} & \multicolumn{2}{c}{SCINet + RevIN} & \multicolumn{2}{c}{$\Delta$} \\
+& \multicolumn{2}{c}{Informer$^\dagger$} & \multicolumn{2}{c}{Informer} & \multicolumn{2}{c}{Informer +RevIN} \\
 \cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
-pred\_len & MSE & MAE & MSE & MAE & $\Delta$MSE & $\Delta$MAE \\
+pred\_len & MSE & MAE & MSE & MAE & MSE & MAE \\
 \midrule
-24  & 0.3352 & 0.3712 & 0.3080 & 0.3458 & $-$0.027 & $-$0.025 \\
-48  & 0.4041 & 0.4333 & 0.3790 & 0.3967 & $-$0.025 & $-$0.037 \\
-168 & 0.4508 & 0.4545 & 0.4073 & 0.4162 & $-$0.044 & $-$0.038 \\
-336 & 0.5335 & 0.5177 & 0.4672 & 0.4719 & $-$0.066 & $-$0.046 \\
-720 & 0.6208 & 0.5938 & 0.5016 & 0.5019 & $-$0.119 & $-$0.092 \\
-960 & 0.6229 & 0.5888 & 0.5499 & 0.5296 & $-$0.073 & $-$0.059 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-% ── Table 4: Delta Comparison ─────────────────────────────────────────────────
-\begin{table}[h]
-\centering
-\caption{RevIN improvement ($\Delta$ = with RevIN $-$ without RevIN):
-paper (5 runs) vs.\ ours (1 run), Informer on ETTh1.}
-\begin{tabular}{rcccc}
-\toprule
-& \multicolumn{2}{c}{Paper $\Delta$} & \multicolumn{2}{c}{Ours $\Delta$} \\
-\cmidrule(lr){2-3}\cmidrule(lr){4-5}
-pred\_len & $\Delta$MSE & $\Delta$MAE & $\Delta$MSE & $\Delta$MAE \\
-\midrule
-24  & $-$0.046 & $-$0.064 & $-$0.027 & $+$0.000 \\
-48  & $-$0.126 & $-$0.121 & $-$0.375 & $-$0.232 \\
-168 & $-$0.483 & $-$0.292 & $-$0.398 & $-$0.256 \\
-336 & $-$0.220 & $-$0.151 & $-$0.501 & $-$0.295 \\
-720 & $-$0.431 & $-$0.228 & $-$0.425 & $-$0.201 \\
-960 & $-$0.568 & $-$0.275 & $-$0.452 & $-$0.221 \\
+24  & 0.577 & 0.549 & 0.550 & 0.536 & 0.504 & 0.472 \\
+48  & 0.685 & 0.625 & 0.772 & 0.668 & 0.646 & 0.547 \\
+168 & 0.931 & 0.752 & 1.138 & 0.853 & 0.655 & 0.561 \\
+336 & 1.128 & 0.873 & 1.278 & 0.909 & 1.058 & 0.758 \\
+720 & 1.215 & 0.896 & 1.357 & 0.945 & 0.926 & 0.717 \\
+960 & --    & --    & 1.470 & 0.990 & 0.902 & 0.715 \\
 \bottomrule
 \end{tabular}
 \end{table}
